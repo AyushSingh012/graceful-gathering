@@ -33,20 +33,26 @@ const Hero = () => {
           </p>
           
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-            <button className="group bg-rose-600 text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-rose-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-3">
-              <span>Book Your Event</span>
-              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </button>
-            <button className="group border-2 border-rose-600 text-rose-600 px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-rose-600 hover:text-white transition-all duration-300 transform hover:scale-105 flex items-center gap-3">
-              <span>Explore Services</span>
-              <svg className="w-5 h-5 group-hover:rotate-90 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-          </div>
+<div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+  <button 
+    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+    className="group bg-rose-600 text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-rose-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-3"
+  >
+    <span>Book Your Event</span>
+    <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+    </svg>
+  </button>
+  <button 
+    onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+    className="group border-2 border-rose-600 text-rose-600 px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-rose-600 hover:text-white transition-all duration-300 transform hover:scale-105 flex items-center gap-3"
+  >
+    <span>Explore Services</span>
+    <svg className="w-5 h-5 group-hover:rotate-90 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+</div>
           
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto mb-20">

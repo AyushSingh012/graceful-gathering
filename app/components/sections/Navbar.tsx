@@ -6,6 +6,24 @@ import Link from 'next/link';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleNavClick = (sectionId: string) => {
+    setIsOpen(false);
+    
+    // If we're on the home page, smooth scroll to section
+    if (window.location.pathname === '/') {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+    } else {
+      // If we're on another page, navigate to home with hash
+      window.location.href = `/#${sectionId}`;
+    }
+  };
+
   return (
     <nav className="bg-white shadow-lg fixed w-full top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,36 +39,42 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link 
-              href="/" 
+            <button 
+              onClick={() => handleNavClick('home')}
               className="text-gray-700 hover:text-rose-600 px-3 py-2 text-sm font-medium transition duration-300"
             >
               Home
-            </Link>
-            <Link 
-              href="#services" 
+            </button>
+            <button 
+              onClick={() => handleNavClick('services')}
               className="text-gray-700 hover:text-rose-600 px-3 py-2 text-sm font-medium transition duration-300"
             >
               Services
-            </Link>
-            <Link 
-              href="#gallery" 
+            </button>
+            <button 
+              onClick={() => handleNavClick('gallery')}
               className="text-gray-700 hover:text-rose-600 px-3 py-2 text-sm font-medium transition duration-300"
             >
               Gallery
-            </Link>
-            <Link 
-              href="#about" 
+            </button>
+            <button 
+              onClick={() => handleNavClick('testimonials')}
+              className="text-gray-700 hover:text-rose-600 px-3 py-2 text-sm font-medium transition duration-300"
+            >
+              Testimonials
+            </button>
+            <button 
+              onClick={() => handleNavClick('about')}
               className="text-gray-700 hover:text-rose-600 px-3 py-2 text-sm font-medium transition duration-300"
             >
               About
-            </Link>
-            <Link 
-              href="#contact" 
+            </button>
+            <button 
+              onClick={() => handleNavClick('contact')}
               className="bg-rose-600 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-rose-700 transition duration-300"
             >
               Contact
-            </Link>
+            </button>
           </div>
 
           {/* Mobile menu button */}
@@ -74,41 +98,42 @@ const Navbar = () => {
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
-              <Link 
-                href="/" 
-                className="text-gray-700 hover:text-rose-600 block px-3 py-2 text-base font-medium"
-                onClick={() => setIsOpen(false)}
+              <button 
+                onClick={() => handleNavClick('home')}
+                className="text-gray-700 hover:text-rose-600 block px-3 py-2 text-base font-medium w-full text-left"
               >
                 Home
-              </Link>
-              <Link 
-                href="#services" 
-                className="text-gray-700 hover:text-rose-600 block px-3 py-2 text-base font-medium"
-                onClick={() => setIsOpen(false)}
+              </button>
+              <button 
+                onClick={() => handleNavClick('services')}
+                className="text-gray-700 hover:text-rose-600 block px-3 py-2 text-base font-medium w-full text-left"
               >
                 Services
-              </Link>
-              <Link 
-                href="#gallery" 
-                className="text-gray-700 hover:text-rose-600 block px-3 py-2 text-base font-medium"
-                onClick={() => setIsOpen(false)}
+              </button>
+              <button 
+                onClick={() => handleNavClick('gallery')}
+                className="text-gray-700 hover:text-rose-600 block px-3 py-2 text-base font-medium w-full text-left"
               >
                 Gallery
-              </Link>
-              <Link 
-                href="#about" 
-                className="text-gray-700 hover:text-rose-600 block px-3 py-2 text-base font-medium"
-                onClick={() => setIsOpen(false)}
+              </button>
+              <button 
+                onClick={() => handleNavClick('testimonials')}
+                className="text-gray-700 hover:text-rose-600 block px-3 py-2 text-base font-medium w-full text-left"
+              >
+                Testimonials
+              </button>
+              <button 
+                onClick={() => handleNavClick('about')}
+                className="text-gray-700 hover:text-rose-600 block px-3 py-2 text-base font-medium w-full text-left"
               >
                 About
-              </Link>
-              <Link 
-                href="#contact" 
-                className="text-gray-700 hover:text-rose-600 block px-3 py-2 text-base font-medium"
-                onClick={() => setIsOpen(false)}
+              </button>
+              <button 
+                onClick={() => handleNavClick('contact')}
+                className="text-gray-700 hover:text-rose-600 block px-3 py-2 text-base font-medium w-full text-left"
               >
                 Contact
-              </Link>
+              </button>
             </div>
           </div>
         )}

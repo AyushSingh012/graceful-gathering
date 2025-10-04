@@ -1,3 +1,5 @@
+'use client';
+
 const Services = () => {
   const services = [
     {
@@ -29,6 +31,12 @@ const Services = () => {
       features: ['Live Music', 'Photo Booths', 'Performers', 'Audio-Visual Setup']
     }
   ];
+
+  const handleContactClick = () => {
+    document.getElementById('contact')?.scrollIntoView({ 
+      behavior: 'smooth' 
+    });
+  };
 
   return (
     <section id="services" className="py-20 bg-white">
@@ -80,12 +88,12 @@ const Services = () => {
                 </ul>
 
                 {/* Learn More Button */}
-                <button className="w-full bg-rose-50 text-rose-600 py-3 rounded-xl font-semibold hover:bg-rose-600 hover:text-white transition-colors duration-300 flex items-center justify-center gap-2">
-  Learn More
-  <svg className="w-4 h-4 transform hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-  </svg>
-</button>
+                <button className="w-full bg-rose-50 text-rose-600 py-3 rounded-xl font-semibold hover:bg-rose-100 transition-colors duration-300 flex items-center justify-center gap-2 group-hover:bg-rose-600 group-hover:text-white">
+                  Learn More
+                  <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
               </div>
             </div>
           ))}
@@ -100,7 +108,10 @@ const Services = () => {
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
               Let's discuss your vision and create something extraordinary together.
             </p>
-            <button className="bg-rose-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-rose-700 transition duration-300 shadow-lg hover:shadow-xl">
+            <button 
+              onClick={handleContactClick}
+              className="bg-rose-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-rose-700 transition duration-300 shadow-lg hover:shadow-xl"
+            >
               Get Free Consultation
             </button>
           </div>

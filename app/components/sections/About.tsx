@@ -71,7 +71,7 @@ const About = () => {
           {/* Left Column - Story */}
           <div>
             <h3 className="text-3xl font-serif font-bold text-gray-800 mb-6">
-              Creating Memories Since 2012
+              Creating Memories Since 2015
             </h3>
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
