@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
+import img from '../../../public/images/gallery/weddings/wedding1.png'
 
 const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -10,56 +12,56 @@ const Gallery = () => {
       id: 1,
       category: 'weddings',
       title: 'Elegant Garden Wedding',
-      image: '/api/placeholder/400/300',
+      image: '/images/gallery/weddings/wedding1.png',
       description: 'Beautiful outdoor ceremony with floral arrangements'
     },
     {
       id: 2,
       category: 'weddings',
       title: 'Luxury Ballroom Reception',
-      image: '/api/placeholder/400/300',
+      image: '/images/gallery/weddings/wedding2.png',
       description: 'Grand reception in a luxury hotel ballroom'
     },
     {
       id: 3,
       category: 'birthdays',
       title: 'Kids Birthday Party',
-      image: '/api/placeholder/400/300',
+      image: '/images/gallery/birthdays/birthday1.png',
       description: 'Colorful and fun birthday celebration'
     },
     {
       id: 4,
       category: 'birthdays',
       title: 'Milestone Birthday',
-      image: '/api/placeholder/400/300',
+      image: '/images/gallery/birthdays/birthday2.png',
       description: 'Elegant 50th birthday celebration'
     },
     {
       id: 5,
       category: 'corporate',
       title: 'Company Gala',
-      image: '/api/placeholder/400/300',
+      image: '/images/gallery/corporate/corporate1.png',
       description: 'Annual corporate gala event'
     },
     {
       id: 6,
       category: 'corporate',
       title: 'Product Launch',
-      image: '/api/placeholder/400/300',
+      image: '/images/gallery/corporate/corporate2.png',
       description: 'Exciting new product reveal event'
     },
     {
       id: 7,
       category: 'weddings',
       title: 'Beach Wedding',
-      image: '/api/placeholder/400/300',
+      image: '/images/gallery/weddings/wedding3.png',
       description: 'Romantic sunset beach ceremony'
     },
     {
       id: 8,
       category: 'birthdays',
       title: 'Surprise Party',
-      image: '/api/placeholder/400/300',
+      image: '/images/gallery/birthdays/birthday3.png',
       description: 'Memorable surprise birthday celebration'
     }
   ];
@@ -113,10 +115,16 @@ const Gallery = () => {
               className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
             >
               {/* Image Container */}
-              <div className="relative h-64 bg-gradient-to-br from-rose-100 to-pink-200 overflow-hidden">
-                <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                  <span className="text-gray-500 text-sm">Event Image</span>
-                </div>
+              <div className="relative h-64 overflow-hidden">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
+                />
                 
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
