@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import img from '../../../public/images/gallery/weddings/wedding1.png'
 
 const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -12,56 +11,56 @@ const Gallery = () => {
       id: 1,
       category: 'weddings',
       title: 'Elegant Garden Wedding',
-      image: '/images/gallery/weddings/wedding1.png',
+      image: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
       description: 'Beautiful outdoor ceremony with floral arrangements'
     },
     {
       id: 2,
       category: 'weddings',
       title: 'Luxury Ballroom Reception',
-      image: '/images/gallery/weddings/wedding2.png',
+      image: 'https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
       description: 'Grand reception in a luxury hotel ballroom'
     },
     {
       id: 3,
       category: 'birthdays',
       title: 'Kids Birthday Party',
-      image: '/images/gallery/birthdays/birthday1.png',
+      image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
       description: 'Colorful and fun birthday celebration'
     },
     {
       id: 4,
       category: 'birthdays',
       title: 'Milestone Birthday',
-      image: '/images/gallery/birthdays/birthday2.png',
+      image: 'https://images.unsplash.com/photo-1558618666-fcd25856cd25?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
       description: 'Elegant 50th birthday celebration'
     },
     {
       id: 5,
       category: 'corporate',
       title: 'Company Gala',
-      image: '/images/gallery/corporate/corporate1.png',
+      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
       description: 'Annual corporate gala event'
     },
     {
       id: 6,
       category: 'corporate',
       title: 'Product Launch',
-      image: '/images/gallery/corporate/corporate2.png',
+      image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
       description: 'Exciting new product reveal event'
     },
     {
       id: 7,
       category: 'weddings',
       title: 'Beach Wedding',
-      image: '/images/gallery/weddings/wedding3.png',
+      image: 'https://images.unsplash.com/photo-1507764923504-cd90bf7da772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
       description: 'Romantic sunset beach ceremony'
     },
     {
       id: 8,
       category: 'birthdays',
       title: 'Surprise Party',
-      image: '/images/gallery/birthdays/birthday3.png',
+      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
       description: 'Memorable surprise birthday celebration'
     }
   ];
@@ -107,23 +106,25 @@ const Gallery = () => {
           ))}
         </div>
 
-        {/* Gallery Grid */}
+        {/* Gallery Grid - FIXED */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredItems.map((item) => (
             <div
               key={item.id}
               className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
             >
-              {/* Image Container */}
-              <div className="relative h-64 overflow-hidden">
+              {/* Image Container - FIXED: Added explicit width/height and removed fill */}
+              <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
                 <Image
                   src={item.image}
                   alt={item.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                  placeholder="blur"
-                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
+                  width={400}
+                  height={300}
+                  className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                  onError={(e) => {
+                    // Fallback to background color if image fails
+                    e.currentTarget.style.display = 'none';
+                  }}
                 />
                 
                 {/* Overlay */}
